@@ -126,13 +126,8 @@
 #endif
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"bootargs=console=ttymxc0,115200 root=/dev/mmcblk0p1 rootwait rw\0" \
-	"bootcmd=mmc dev " __stringify(CONFIG_SYS_MMC_ENV_DEV) "; mmc read ${loadaddr} 0x800 0x1a00;bootm\0" \
-	"splashimage=0x10800000\0"				\
-	"splashimage_mmc_init_block=0x410\0"			\
-	"splashimage_mmc_blkcnt=0x3F0\0"			\
-	"splashimage_file_name=boot/out.bmp.gz\0"		\
-        "splashpos=m,m\0"
+	"bootargs=console=ttymxc0,115200 root=/dev/mmcblk0p2 rootwait rw\0" \
+	"bootcmd=mmc dev 0; fatload mmc 0:1 ${loadaddr} uImage; bootm\0"
 
 #define CONFIG_BOOTCOMMAND \
 		   "run bootcmd;"
